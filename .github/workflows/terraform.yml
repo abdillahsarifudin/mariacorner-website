@@ -39,7 +39,6 @@ jobs:
       run: terraform plan -no-color
       env:
         TF_CLI_ARGS: '-var-file="terraform.tfvars"'
-      continue-on-error: true
 
     - name: Update Pull Request
       uses: actions/github-script@0.9.0
