@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  tfplan:
+  terraform:
     name: Terraform Plan
     runs-on: ubuntu-latest
     steps:
@@ -70,21 +70,12 @@ jobs:
             body: output
           })
 
-  tfapply:
-    name: Terraform Apply
-    runs-on: ubuntu-latest
-    steps:
     - name: Terraform Apply
       if: github.ref == 'ref/heads/master' && github.event_name == 'push'
       run: terraform apply --auto--approve
       env:
         TF_CLI_ARGS: '-var-file="terraform.tfvars"'
 
-  s3sync:
-    needs: tfapply
-    name: Sync S3 Components
-    runs-on: ubuntu-latest
-    steps:
     - name: Sync S3
       if: github.ref == 'ref/heads/master' && github.event_name == 'push'
       uses: jakejarvis/s3-sync-action@master
