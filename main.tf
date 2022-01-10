@@ -1,8 +1,8 @@
 resource "aws_s3_bucket" "mariacorner-s3-bucket" {
-    bucket = var.s3-bucket.name
-    acl = "public-read"
+  bucket = var.s3-bucket.name
+  acl    = "public-read"
 
-    policy  = <<EOF
+  policy = <<EOF
 {
      "Id" : "MakePublic",
    "Version" : "2012-10-17",
@@ -18,7 +18,7 @@ resource "aws_s3_bucket" "mariacorner-s3-bucket" {
     ]
   }
 EOF
-website {
-       index_document = "index.html"
-   }
+  website {
+    index_document = "index.html"
+  }
 }

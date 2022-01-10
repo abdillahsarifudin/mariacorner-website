@@ -1,15 +1,15 @@
 terraform {
-    required_providers {
-        aws = {
-            source = "hashicorp/aws"
-        }
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
     }
+  }
 
-    cloud {
-        organization = "mariacorner"
+  cloud {
+    organization = "mariacorner"
 
-        workspaces {
-            name = "mariacorner-prod-website"
-        }
+    workspaces {
+      name = "mariacorner-prod-website"
     }
+  }
 }
