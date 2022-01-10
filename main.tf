@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "mariacorner-s3-bucket" {
-  bucket = var.s3-bucket.name
+  bucket = var.s3-bucket-name
   acl    = "public-read"
 
   policy = <<EOF
@@ -12,7 +12,7 @@ resource "aws_s3_bucket" "mariacorner-s3-bucket" {
              "s3:GetObject"
           ],
          "Effect" : "Allow",
-         "Resource" : "arn:aws:s3:::"${var.s3-bucket.name}"/*",
+         "Resource" : "arn:aws:s3:::"${var.s3-bucket-name}"/*",
          "Principal" : "*"
       }
     ]
