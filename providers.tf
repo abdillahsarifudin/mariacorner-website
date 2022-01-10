@@ -3,10 +3,8 @@ terraform {
     aws = {
       source = "hashicorp/aws"
     }
-    random = {
-      source = "hashicorp/random"
-    }
   }
+  required_version = ">= 1.1.0"
 
   cloud {
     organization = "mariacorner"
