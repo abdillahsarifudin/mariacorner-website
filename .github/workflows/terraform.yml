@@ -28,8 +28,7 @@ jobs:
       id: init
       run: terraform init
       env:
-        TF_ACTION_WORKING_DIR: 'terraform'
-        TF_CLI_ARGS: -var-file="terraform.tfvars"
+        TF_CLI_ARGS: '-var-file="terraform.tfvars"'
 
     - name: Terraform Validate
       id: validate
@@ -40,8 +39,7 @@ jobs:
       if: github.event_name == 'pull_request'
       run: terraform plan -no-color
       env:
-        TF_ACTION_WORKING_DIR: 'terraform'
-        TF_CLI_ARGS: -var-file="terraform.tfvars"
+        TF_CLI_ARGS: '-var-file="terraform.tfvars"'
       continue-on-error: true
 
     - name: Update Pull Request
@@ -78,8 +76,7 @@ jobs:
       if: github.ref == 'ref/heads/master' && github.event_name == 'push'
       run: terraform apply --auto--approve
       env:
-        TF_ACTION_WORKING_DIR: 'terraform'
-        TF_CLI_ARGS: -var-file="terraform.tfvars"
+        TF_CLI_ARGS: '-var-file="terraform.tfvars"'
 
   sync:
     needs: terraform
