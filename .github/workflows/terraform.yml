@@ -71,7 +71,6 @@ jobs:
           })
 
   tfapply:
-    needs: tfplan
     name: Terraform Apply
     runs-on: ubuntu-latest
     steps:
