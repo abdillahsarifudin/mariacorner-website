@@ -37,6 +37,7 @@ jobs:
       id: plan
       if: github.event_name == 'pull_request'
       run: terraform plan -no-color
+      continue-on-error: true
       env:
         TF_CLI_ARGS: '-var-file="terraform.tfvars"'
 
@@ -69,6 +70,10 @@ jobs:
             repo: context.repo.repo,
             body: output
           })
+
+    - name: Terraform Plan Status
+      if: steps.plan.outcome == 'failure'
+      run: exit 1
 
     - name: Terraform Apply
       if: github.ref == 'ref/heads/master' && github.event_name == 'push'
