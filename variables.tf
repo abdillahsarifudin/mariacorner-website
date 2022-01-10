@@ -1,4 +1,4 @@
 variable "s3-bucket-name" {
-  type = string
+  type    = string
   default = "mcnasilemak.com"
 }
