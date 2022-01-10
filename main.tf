@@ -13,7 +13,7 @@ data "aws_iam_policy_document" "public-read-bucket-policy" {
   statement {
     sid       = "Allow Public Read"
     actions   = ["s3:GetObject"]
-    resources = ["arn:aws:s3:::${var.s3-bucket-name}", ]
+    resources = ["arn:aws:s3:::${var.s3-bucket-name}/*", ]
 
     principals {
       type        = "*"
