@@ -78,12 +78,6 @@ jobs:
       env:
         TF_CLI_ARGS: '-var-file="terraform.tfvars"'
 
-  sync:
-    needs: terraform
-    name: Sync S3
-    runs-on: ubuntu-latest
-    steps:
-
     - name: Sync S3
       if: github.ref == 'ref/heads/master' && github.event_name == 'push'
       uses: jakejarvis/s3-sync-action@master
