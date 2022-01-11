@@ -18,3 +18,8 @@ terraform {
 provider "aws" {
   region = "ap-southeast-1"
 }
+
+provider "aws" {
+  alias  = "acm-provider"
+  region = "us-east-1"
+}

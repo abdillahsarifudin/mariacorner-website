@@ -1,7 +1,7 @@
 module "s3-bucket-mariacorner-website" {
   source        = "terraform-aws-modules/s3-bucket/aws"
   version       = "2.11.2"
-  bucket        = var.s3-bucket-name
+  bucket        = var.mariascorner-s3-bucket-name
   acl           = "public-read"
   attach_policy = true
   force_destroy = true
@@ -29,7 +29,7 @@ module "s3-bucket-mariacorner-website" {
   tags = merge(
     var.additional_tags,
     {
-      Name = var.s3-bucket-name
+      Name = var.mariascorner-s3-bucket-name
     },
   )
 }
@@ -38,7 +38,7 @@ data "aws_iam_policy_document" "public-read-bucket-policy" {
   statement {
     sid       = "Allow Public Read"
     actions   = ["s3:GetObject"]
-    resources = ["arn:aws:s3:::${var.s3-bucket-name}/*", ]
+    resources = ["${module.s3-bucket-mariacorner-website.s3_bucket_arn}/*", ]
 
     principals {
       type        = "*"
