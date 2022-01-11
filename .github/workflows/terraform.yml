@@ -86,5 +86,5 @@ jobs:
 
     - name: Deploy static site to S3 bucket
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-      run: aws s3 sync ./src/ s3://mcnasilemak.com --delete
+      run: aws s3 sync ./src/ s3://mariascorner.co --delete
         
