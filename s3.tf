@@ -38,7 +38,7 @@ data "aws_iam_policy_document" "public-read-bucket-policy" {
   statement {
     sid       = "Allow Public Read"
     actions   = ["s3:GetObject"]
-    resources = ["arn:aws:s3:::${var.mariascorner-s3-bucket-name}/*", ]
+    resources = ["${module.s3-bucket-mariacorner-website.s3_bucket_arn}/*", ]
 
     principals {
       type        = "*"
