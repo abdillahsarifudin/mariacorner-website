@@ -1,6 +1,6 @@
-variable "s3-bucket-name" {
+variable "mariascorner-s3-bucket-name" {
   type    = string
-  default = "mcnasilemak.com"
+  default = "mariascorner.co"
 }
 
 variable "additional_tags" {
