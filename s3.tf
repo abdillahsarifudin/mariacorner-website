@@ -29,7 +29,7 @@ module "s3-bucket-mariacorner-website" {
   tags = merge(
     var.additional_tags,
     {
-      Name = var.s3-bucket-name
+      Name = var.mariascorner-s3-bucket-name
     },
   )
 }
