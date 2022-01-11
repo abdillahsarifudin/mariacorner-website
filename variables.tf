@@ -8,3 +8,8 @@ variable "additional_tags" {
   description = "Additional resource tags"
   type        = map(string)
 }
+
+variable "mariascorner-domain-name" {
+  type    = string
+  default = "mariascorner.co"
+}
