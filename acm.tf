@@ -1,3 +1,9 @@
+data "aws_acm_certificate" "mariascorner-issued-ssl-certificate-us-east-1" {
+  provider = aws.acm-provider
+  domain   = data.aws_route53_zone.mariascorner-public-hosted-zone.name
+  statuses = ["ISSUED"]
+}
+
 module "mariascorner-acm-ap-southeast-1" {
   source  = "terraform-aws-modules/acm/aws"
   version = "~> 3.0"

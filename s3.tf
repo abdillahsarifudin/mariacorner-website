@@ -45,4 +45,14 @@ data "aws_iam_policy_document" "public-read-bucket-policy" {
       identifiers = ["*"]
     }
   }
+  statement {
+    sid       = "Allow OAI Access"
+    actions   = ["s3:GetObject"]
+    resources = ["${module.s3-bucket-mariacorner-website.s3_bucket_arn}/*", ]
+
+    principals {
+      type        = "AWS"
+      identifiers = ["${aws_cloudfront_origin_access_identity.mariascorner-website-oai.iam_arn}"]
+    }
+  }
 }
