@@ -51,8 +51,10 @@ resource "aws_cloudfront_distribution" "mariascorner-website-distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = data.aws_acm_certificate.mariascorner-issued-ssl-certificate-us-east-1.arn
-    ssl_support_method  = "sni-only"
+    acm_certificate_arn            = data.aws_acm_certificate.mariascorner-issued-ssl-certificate-us-east-1.arn
+    minimum_protocol_version       = "TLSv1.2_2021"
+    ssl_support_method             = "sni-only"
+    cloudfront_default_certificate = false
   }
 
   depends_on = [module.s3-bucket-mariacorner-website]
